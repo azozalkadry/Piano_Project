@@ -1,0 +1,72 @@
+body {
+    background-color: #fffcfc;
+}
+
+.piano {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 500px;
+    margin-top: 100px;
+    perspective: 800px;
+}
+
+.key {
+    width: 80px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #000;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    transform-origin: bottom;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.key.black {
+    background-color: #000;
+    width: 50px;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+    margin-left: -25px;
+    z-index: 1;
+}
+
+.key:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.key.black:hover {
+    transform: translateY(-10px);
+}
+
+@keyframes pressAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(10px) scale(0.9);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.key.active {
+    animation: pressAnimation 0.3s ease;
+}
+
+.key-label {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
